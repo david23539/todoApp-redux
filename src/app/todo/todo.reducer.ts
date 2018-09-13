@@ -1,4 +1,4 @@
-import { Acciones, AGREGAR_TODO, TOGGLE_TODO, EDITAR_TODO, BORRAR_TODO, TOGGLE_ALL_TODO } from './todo.actions';
+import { Acciones, AGREGAR_TODO, TOGGLE_TODO, EDITAR_TODO, BORRAR_TODO, TOGGLE_ALL_TODO, CLEAR_COMPLETE_TODO } from './todo.actions';
 import { Todo } from './model/todo.model';
 
 
@@ -52,8 +52,12 @@ export function todoReducer(state = estadoInicial, action: Acciones): Todo[] {
                 }
             });
 
-            case BORRAR_TODO:
+        case BORRAR_TODO:
             return state.filter(todoEdit => todoEdit.id !== action.id);
+
+        case CLEAR_COMPLETE_TODO:
+            return state.filter(todoEdit => !todoEdit.completado);
+
         default:
             return state;
     }

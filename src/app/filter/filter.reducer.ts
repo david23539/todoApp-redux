@@ -6,7 +6,7 @@ const estadoInicial: filtrosValidos = 'todos';
 export function filtroReducer ( state = estadoInicial, accion: acciones): filtrosValidos {
 
 
-    switch(accion.type) {
+    switch (accion.type) {
 
         case SET_FILTRO:
             return accion.filtro;
